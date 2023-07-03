@@ -79,6 +79,9 @@ jobs:
       - name: Package application
         run: yarn run package
         if: ${{ matrix.os == 'ubuntu-20.04' }}
+        env:
+          npm_config_arch: ${{ matrix.arch }}
+          TARGET_ARCH: ${{ matrix.arch }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         if:

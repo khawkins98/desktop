@@ -160,6 +160,11 @@ export function getDistArchitecture(): 'arm64' | 'x64' | 'armv7l' {
     return 'armv7l'
   }
 
+  const targetArch = process.env.TARGET_ARCH
+  if (targetArch === 'arm64') {
+    return 'arm64'
+  }
+
   // TODO: Check if it's x64 running on an arm64 Windows with IsWow64Process2
   // More info: https://www.rudyhuyn.com/blog/2017/12/13/how-to-detect-that-your-x86-application-runs-on-windows-on-arm/
   // Right now (March 3, 2021) is not very important because support for x64

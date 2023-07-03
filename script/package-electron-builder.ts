@@ -9,8 +9,8 @@ const globPromise = promisify(glob)
 
 import { getDistPath, getDistRoot } from './dist-info'
 
-function getArchitecture() {
-  switch (process.arch) {
+function getArchitecture(targetArch?: string) {
+  switch (targetArch) {
     case 'arm64':
       return '--arm64'
     case 'arm':
@@ -34,11 +34,14 @@ export async function packageElectronBuilder(): Promise<Array<string>> {
 
   const configPath = path.resolve(__dirname, 'electron-builder-linux.yml')
 
+  const targetArch = process.env.TARGET_ARCH
+  console.log(`Packaging for target architecture: '${targetArch}'`)
+
   const args = [
     'build',
     '--prepackaged',
     distPath,
-    getArchitecture(),
+    getArchitecture(targetArch),
     '--config',
     configPath,
   ]

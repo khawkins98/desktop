@@ -32,9 +32,6 @@ jobs:
             friendlyName: Windows
           - os: ubuntu-20.04
             friendlyName: Ubuntu
-        exclude:
-          - os: ubuntu-20.04
-            arch: arm64
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3

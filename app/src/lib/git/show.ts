@@ -3,7 +3,7 @@ import { ChildProcess } from 'child_process'
 import { git } from './core'
 
 import { Repository } from '../../models/repository'
-import { GitError } from 'dugite'
+import { GitError } from '@shiftkey/dugite'
 
 /**
  * Retrieve the binary contents of a blob from the repository at a given
